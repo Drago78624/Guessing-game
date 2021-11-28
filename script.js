@@ -21,12 +21,20 @@ document.querySelector(".check > button").addEventListener("click", () => {
     score--;
     //showing decreased score on each check
     visibleScore.textContent = score;
+    if (score == 0) {
+      helper.textContent = "Game Over 😢";
+      document.querySelector(".check > button").disabled = true;
+    }
   } else if (userInput < randomNumber && userInput > 0) {
     helper.textContent = "Too Low 📉";
     //decreasing score by 1 on wrong guess
     score--;
     //showing decreased score on each check
     visibleScore.textContent = score;
+    if (score == 0) {
+      helper.textContent = "Game Over 😢";
+      document.querySelector(".check > button").disabled = true;
+    }
     //checkin if user input is less than 0 or equal to 0 if either one is true "Enter the Number in the given range 🙂" will be shown
   } else if (userInput < 0 || userInput === 0) {
     helper.textContent = "Enter the Number in the given range 🙂";
@@ -67,4 +75,5 @@ document.querySelector(".play-again button").addEventListener("click", () => {
   document.querySelector("input").value = "";
   randomNumberPlace.style.backgroundColor = "white";
   randomNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector(".check > button").disabled = false;
 });
